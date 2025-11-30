@@ -44,8 +44,10 @@ gem install redis-streams-pubsub
 ```ruby
 require 'redis-streams-pubsub'
 
-# Create a publisher
-publisher = Redis::Streams::PubSub::Client.new(url: "redis://localhost:6379")
+# Option 1: Use a shorthand alias
+Client = Redis::Streams::PubSub::Client
+
+publisher = Client.new(url: "redis://localhost:6379")
 
 # Publish a message
 publisher.publish("notifications", {
@@ -60,8 +62,10 @@ publisher.publish("notifications", {
 ```ruby
 require 'redis-streams-pubsub'
 
-# Create a subscriber
-subscriber = Redis::Streams::PubSub::Client.new(url: "redis://localhost:6379")
+# Option 2: Include the module
+include Redis::Streams::PubSub
+
+subscriber = Client.new(url: "redis://localhost:6379")
 
 # Subscribe and process messages
 subscriber.subscribe("notifications") do |message|
@@ -73,10 +77,30 @@ end
 
 ## Usage
 
+### Shortening the Namespace
+
+There are several ways to avoid typing the long namespace:
+
+```ruby
+# Option 1: Create an alias (recommended)
+Client = Redis::Streams::PubSub::Client
+client = Client.new
+
+# Option 2: Include the module
+include Redis::Streams::PubSub
+client = Client.new
+
+# Option 3: Assign to a local variable
+PubSub = Redis::Streams::PubSub
+client = PubSub::Client.new
+```
+
 ### Basic Publisher
 
 ```ruby
-client = Redis::Streams::PubSub::Client.new(url: "redis://localhost:6379")
+Client = Redis::Streams::PubSub::Client
+
+client = Client.new(url: "redis://localhost:6379")
 
 # Publish messages to a topic
 client.publish("events", { event: "page_view", page: "/home" })
@@ -86,7 +110,9 @@ client.publish("events", { event: "button_click", button: "signup" })
 ### Basic Subscriber
 
 ```ruby
-client = Redis::Streams::PubSub::Client.new(url: "redis://localhost:6379")
+include Redis::Streams::PubSub
+
+client = Client.new(url: "redis://localhost:6379")
 
 # Subscribe to a topic
 client.subscribe("events") do |message|

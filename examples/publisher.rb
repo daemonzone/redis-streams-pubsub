@@ -4,8 +4,11 @@
 $LOAD_PATH.unshift File.expand_path("../lib", __dir__)
 require "redis-streams-pubsub"
 
+# Use a shorter alias
+Client = Redis::Streams::PubSub::Client
+
 # Create a publisher client
-publisher = Redis::Streams::PubSub::Client.new(url: "redis://127.0.0.1:6379")
+publisher = Client.new(url: "redis://127.0.0.1:6379")
 
 # Topic to publish to
 topic = "notifications"
@@ -23,7 +26,7 @@ puts "Publishing messages to '#{topic}' topic..."
 
   publisher.publish(topic, message)
   puts "Published: #{message.inspect}"
-  
+
   sleep 1
 end
 
