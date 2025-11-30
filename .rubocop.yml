@@ -17,3 +17,7 @@ Metrics/BlockLength:
 
 Style/FrozenStringLiteralComment:
   Enabled: true
+
+Naming/FileName:
+  Exclude:
+    - 'lib/redis-streams-pubsub.rb'
