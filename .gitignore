@@ -1,0 +1,38 @@
+# Ruby / Gems
+*.gem
+*.rbc
+/.bundle
+/vendor/bundle
+/.config
+/coverage/
+/InstalledFiles
+/pkg/
+/tmp/
+
+# Redis / local data
+*.rdb
+*.aof
+dump.rdb
+*.log
+
+# Logs
+/log/*
+!/log/.keep
+*.log
+
+# OS / Editor
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+*.sublime-workspace
+*.sublime-project
+
+# RSpec / RuboCop / Tests
+/spec/examples.txt
+/.rubocop_todo.yml
+/.rspec_status
+
+# Other
+.byebug_history
