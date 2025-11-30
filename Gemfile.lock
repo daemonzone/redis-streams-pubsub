@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     redis-streams-pubsub (0.1.0)
-      redis-client (>= 0.26)
+      redis-client (~> 0.26)
 
 GEM
   remote: https://rubygems.org/
@@ -54,6 +54,9 @@ GEM
       lint_roller (~> 1.1)
       rubocop (>= 1.75.0, < 2.0)
       rubocop-ast (>= 1.47.1, < 2.0)
+    rubocop-rspec (3.8.0)
+      lint_roller (~> 1.1)
+      rubocop (~> 1.81)
     ruby-progressbar (1.13.0)
     unicode-display_width (3.2.0)
       unicode-emoji (~> 4.1)
@@ -69,6 +72,7 @@ DEPENDENCIES
   rspec (~> 3.12)
   rubocop (~> 1.31)
   rubocop-performance (~> 1.14)
+  rubocop-rspec (~> 3.8)
 
 RUBY VERSION
    ruby 3.2.9p265
