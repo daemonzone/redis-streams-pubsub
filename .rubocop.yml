@@ -1,0 +1,23 @@
+inherit_from: .rubocop_todo.yml
+
+require: rubocop-performance
+AllCops:
+  TargetRubyVersion: 3.2
+  NewCops: enable
+  Exclude:
+    - 'spec/**/*'
+    - 'bin/*'
+
+Layout/LineLength:
+  Max: 120
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+
+Style/FrozenStringLiteralComment:
+  Enabled: true
+
+Naming/FileName:
+  Exclude:
+    - 'lib/redis-streams-pubsub.rb'
